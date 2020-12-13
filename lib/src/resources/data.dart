@@ -36,7 +36,7 @@ class DataConfig {
   static final testDate = DateTime(2021, 6, 25);
 }
 
-class AppColor {
+class AppColorBrownVintage {
   static final Color coffee = Color(0xFF4B371C);
   static final Color mocha = Color(0xFF3C280D);
   static final Color peanut = Color(0xFF795C34);
@@ -47,3 +47,24 @@ class AppColor {
   static final Color chocolate = Color(0xFF2E1503);
 
 }
+
+class AppColor {
+  static final Color lightYellow = Color(0xFFFFFFB5);
+  static final Color lightGreen1 = Color(0xFF7bc67b);
+  static final Color lightGreen2 = Color(0xFFbedbbb);
+  static final Color lightGreen3 = Color(0xFFc6fced);
+  static final Color lightGreen4 = Color(0xFFd1f5d3);
+  static final Color darkGreen1 = Color(0xFF6b8c42);
+  static final Color darkGreen2 = Color(0xFF8db596);
+  static final Color brown = Color(0xFF5a3921);
+  static final Color grey = Color(0xFF838383);
+  static final Color greyPink = Color(0xFFad9d9d);
+  static final Color darkPink = Color(0xFFd9adad);
+  static final Color pink = Color(0xFFfccbcb);
+  static final Color lightPink = Color(0xFFfff0f0);
+  static final Color darkPink1 = Color(0xFFebd4d4);
+  static final Color brown1 = Color(0xFF835858);
+  static final Color brown2 = Color(0xFF463333);
+  static final Color darkBlue = Color(0xFF3282b8);
+}
+

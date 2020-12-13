@@ -26,7 +26,7 @@ class _NotePageState extends State<NotePage> with SingleTickerProviderStateMixin
   bool deleteMode = true;
   final TextEditingController textController = TextEditingController();
   GlobalKey<FormBuilderState> _formBuilderKey = GlobalKey<FormBuilderState>();
-  final _colors = [0xffffff, 0xffF1E219, 0xff00A506, 0xffd0484e, 0xff2AFFF1];
+  final _colors = [0xFFad9d9d, 0xffF1E219, 0xff00A506, 0xffd0484e, 0xFF3282b8];
 
   AnimationController _animationController;
   CalendarController _calendarController;
@@ -167,7 +167,7 @@ class _NotePageState extends State<NotePage> with SingleTickerProviderStateMixin
                 : Positioned(
                     child: FloatingActionButton(
                         child: Icon(Icons.add),
-                        backgroundColor: AppColor.tortilla,
+                        backgroundColor: AppColor.brown2,
                         onPressed: () => _showDialog(context)),
                     bottom: 25,
                     right: 25,
@@ -384,9 +384,6 @@ class _NotePageState extends State<NotePage> with SingleTickerProviderStateMixin
                                                   : SizeConfig.safeBlockHorizontal * 8,
                                               decoration: BoxDecoration(
                                                   color: Color(color),
-                                                  border: (_colors.indexOf(color) == 0)
-                                                      ? Border.all(color: Colors.black38)
-                                                      : null,
                                                   borderRadius: BorderRadius.circular(5)),
                                             ),
                                           ))
@@ -405,10 +402,10 @@ class _NotePageState extends State<NotePage> with SingleTickerProviderStateMixin
                     height: SizeConfig.safeBlockVertical * 5,
                     child: Text(
                       event != null ? 'Sửa' : 'Lưu',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: Colors.black87, fontSize: 16,fontWeight: FontWeight.w500),
                     ),
                   ),
-                  color: AppColor.tortilla,
+                  color: Colors.white,
                   onPressed: () {
                     if (_formBuilderKey.currentState.saveAndValidate()) {
                       event != null
@@ -431,7 +428,7 @@ class _NotePageState extends State<NotePage> with SingleTickerProviderStateMixin
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
-                color: AppColor.cinnamon,
+                color: AppColor.brown,
               ),
               SizedBox(width: SizeConfig.blockSizeHorizontal * 1),
             ],

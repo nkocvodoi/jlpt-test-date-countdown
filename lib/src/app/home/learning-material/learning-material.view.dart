@@ -60,10 +60,13 @@ class _LearningMaterialState extends State<LearningMaterial> {
           Positioned(
             top: 40,
             left: 20,
-            child: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 30),
-              onPressed: () => Navigator.pop(context),
-            ),
+            child: Row(children: [
+              IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 30),
+                onPressed: () => Navigator.pop(context),
+              ),
+              Text("Tài liệu ôn thi", style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold))
+            ]),
           ),
           Container(
             height: SizeConfig.screenHeight,
@@ -77,12 +80,12 @@ class _LearningMaterialState extends State<LearningMaterial> {
         ],
       ),
       floatingActionButton: OpenContainer(
-        openColor: Colors.deepOrange,
+        openColor: AppColor.brown1,
         transitionType: ContainerTransitionType.fade,
         openBuilder: (BuildContext context, VoidCallback _) => AddLearningMaterial(),
         closedElevation: 6.0,
         closedShape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
-        closedColor: Colors.deepOrange,
+        closedColor: AppColor.brown2,
         onClosed: (obj) => _cubit.loadLearningData(1),
         closedBuilder: (BuildContext context, VoidCallback openContainer) => SizedBox(
           height: 56,
@@ -108,14 +111,16 @@ class _LearningMaterialState extends State<LearningMaterial> {
                   (index) => Container(
                         margin: EdgeInsets.symmetric(horizontal: SizeConfig.safeBlockHorizontal),
                         width: SizeConfig.safeBlockHorizontal * 25,
-                        height: SizeConfig.safeBlockVertical * 8,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: _cubit.colorList[index]),
+                        height: SizeConfig.safeBlockVertical * 6,
+                        decoration:
+                            BoxDecoration(borderRadius: BorderRadius.circular(10), color: _cubit.colorList[index]),
                         child: FlatButton(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                          onPressed: () => Modular.link
-                              .pushNamed(LearningMaterialModule.detailLearning, arguments: Params(title: title, subject: _cubit.subjectNoCapitals[index])),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          onPressed: () => Modular.link.pushNamed(LearningMaterialModule.detailLearning,
+                              arguments: Params(title: title, subject: _cubit.subjectNoCapitals[index])),
                           child: Center(
-                            child: Text("${data.elementAt(index)}", style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold)),
+                            child: Text("${data.elementAt(index)}",
+                                style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold)),
                           ),
                         ),
                       )),
@@ -126,7 +131,8 @@ class _LearningMaterialState extends State<LearningMaterial> {
             children: [
               SizedBox(width: SizeConfig.safeBlockHorizontal),
               FlatButton(
-                onPressed: () => Modular.link.pushNamed(LearningMaterialModule.detailLearning, arguments: Params(title: title, type: type)),
+                onPressed: () => Modular.link
+                    .pushNamed(LearningMaterialModule.detailLearning, arguments: Params(title: title, type: type)),
                 padding: EdgeInsets.zero,
                 child: Row(
                   children: [
@@ -160,7 +166,8 @@ class _LearningMaterialState extends State<LearningMaterial> {
                     data: ThemeData(cupertinoOverrideTheme: CupertinoThemeData(brightness: Brightness.dark)),
                     child: CupertinoActivityIndicator(),
                   )
-                : const CircularProgressIndicator(strokeWidth: 2.0, valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
+                : const CircularProgressIndicator(
+                    strokeWidth: 2.0, valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
           ),
         ),
         onRefresh: onRefresh,
@@ -169,10 +176,6 @@ class _LearningMaterialState extends State<LearningMaterial> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text("Tài liệu ôn thi", style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold)),
-              ),
               SizedBox(height: SizeConfig.safeBlockVertical * 3),
               buildSlidableCategory("Tài liệu luyện thi theo môn học", _cubit.subjects, "tai lieu"),
               SizedBox(height: SizeConfig.safeBlockVertical * 3),
@@ -180,7 +183,8 @@ class _LearningMaterialState extends State<LearningMaterial> {
               SizedBox(height: SizeConfig.safeBlockVertical * 3),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("Tài liệu mới cập nhật", style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
+                child: Text("Tài liệu mới cập nhật",
+                    style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
               ),
               SizedBox(height: SizeConfig.safeBlockVertical),
               BlocBuilder<LearningMaterialCubit, LearningMaterialState>(
